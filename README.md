@@ -20,7 +20,8 @@ image1.save("../../images/p3/changed_pic.ppm");
 MyImageClass image1("../../images/Mandrill-gray.ppm");
 image1.save("../../images/p6/changed_pic.ppm");
 ```
-The results are saved in *p3* and *p6* directories respectively.
+The results are saved in *p3* and *p6* directories respectively as follows:
+
 
 
 ## Task 2: Operations on Images
