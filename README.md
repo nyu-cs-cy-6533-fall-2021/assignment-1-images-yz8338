@@ -54,7 +54,7 @@ The results are saved in *p3* and *p6* directories respectively as follows:
 
 I use C++'s operator overloading to implement this task. Basically, for each operation which contains two input images(like +, +=, -, -=), it first check whether their sizes are the same, then compute operations on vector. 
         
-Here are the code for addition: (other operations are also in similar construction)
+Here are the code for addition: (other operations are also in similar structure)
 ```bash
 MyImageClass MyImageClass::operator+(MyImageClass image) {
     MyImageClass newImage;
@@ -79,6 +79,8 @@ MyImageClass MyImageClass::operator+(MyImageClass image) {
     return newImage;
 }
 ```
+        
+Whereas for subtraction and subtraction assignment, I use clamp(diff, 0, max) to limit the pixel value between 0 and max. For addition assignment, I average the summation. For multiplication and multiplication assignment, I convert the float product into int to avoid overflow and underflow. Finally, for array index operator, grab the rgb data and store them in a pixel vector.
         
 Then I use the following code in main.cpp to run these operations:
         
