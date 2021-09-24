@@ -73,7 +73,8 @@ MyImageClass::MyImageClass(const char* filename) {
                 stringstream ss;
                 ss << line;
 
-                // Save integers
+                // Save width, height, max pixel value
+                // Also ignore comments
                 if (!ss.eof()) {
                     int temp;
                     while (ss >> temp) {
@@ -85,7 +86,6 @@ MyImageClass::MyImageClass(const char* filename) {
                     }
                 } 
             }
-            // Save width, height, max pixel value
             width = data.at(0);
             height = data.at(1);
             max = data.at(2);
@@ -94,6 +94,7 @@ MyImageClass::MyImageClass(const char* filename) {
                 data.erase(data.begin());
             }
 
+            // Read pixels
             int size = width * height * 3;
             char *buffer = new char[size];
             imageFile.read(buffer, size);
@@ -107,12 +108,6 @@ MyImageClass::MyImageClass(const char* filename) {
         // Save pixels
         this->data = data;
 
-        // cout << imageType << "\n";
-        // cout << width << "\n";
-        // cout << height << "\n";
-        // cout << max << "\n";
-        // cout << data.at(0) << "\n";
-
         imageFile.close();
     } else {
         cout<<"Can not open!";
@@ -124,18 +119,35 @@ MyImageClass::~MyImageClass(void) {
 }
 
 void MyImageClass::save(const char* filename) {
-    ofstream imageFile;
 
-    imageFile.open(filename);
-    if (imageFile.is_open()) {
-        imageFile << "P3" << "\n";
-        imageFile << (this->width) << "\n";
-        imageFile << (this->height) << "\n";
-        imageFile << (this->max) << "\n";
-        for (int i = 0; i < (this->data).size(); i ++) {
-            imageFile << (this->data).at(i) << "\n";
-        }
+    if (imageType == "P2" || imageType == "P3") {
+        ofstream imageFile;
+        imageFile.open(filename);
+        if (imageFile.is_open()) {
+            imageFile << (this->imageType) << "\n";
+            imageFile << (this->width) << "\n";
+            imageFile << (this->height) << "\n";
+            imageFile << (this->max) << "\n";
+            for (int i = 0; i < (this->data).size(); i ++) {
+                imageFile << (this->data).at(i) << "\n";
+            }
         imageFile.close();
+        }
+    }
+
+    if (imageType == "P5" || imageType == "P6") {
+        ofstream imageFile;
+        imageFile.open(filename, ios::out | ios::binary);
+        if (imageFile.is_open()) {
+            imageFile << (this->imageType) << "\n";
+            imageFile << (this->width) << " ";
+            imageFile << (this->height) << "\n";
+            imageFile << (this->max) << "\n";
+            for (int i = 0; i < (this->data).size(); i ++) {
+                imageFile.write((char*)&data.at(i), 1);
+            }
+        imageFile.close();
+        }
     }
 }
 
@@ -155,7 +167,7 @@ MyImageClass MyImageClass::operator+(MyImageClass image) {
             newImageData.push_back(sum);
         }
         newImage.data = newImageData;
-        newImage.max = 255;
+        newImage.max = max;
     } else {
         cout << "The images must be the same size! \n";
     }
@@ -175,11 +187,11 @@ MyImageClass MyImageClass::operator-(MyImageClass image) {
         newImage.height = image.height;
         for (int i = 0; i < image.data.size(); i ++) {
             diff = (this->data).at(i) - image.data.at(i);
-            diff = clamp(diff, 0, 255);
+            diff = clamp(diff, 0, max);
             newImageData.push_back(diff);
         }
         newImage.data = newImageData;
-        newImage.max = 255;
+        newImage.max = max;
     } else {
         cout << "The images must be the same size! \n";
     }
@@ -198,7 +210,7 @@ MyImageClass MyImageClass::operator+=(MyImageClass image) {
             (this->data).at(i) += image.data.at(i);
             (this->data).at(i) = (this->data).at(i)/2;
         }
-        newImage.max = 255;
+        newImage.max = max;
     } else {
         cout << "The images must be the same size! \n";
     }
@@ -215,9 +227,9 @@ MyImageClass MyImageClass::operator-=(MyImageClass image) {
         newImage.height = image.height;
         for (int i = 0; i < image.data.size(); i ++) {
             (this->data).at(i) -= image.data.at(i);
-            (this->data).at(i) = clamp((this->data).at(i), 0, 255);
+            (this->data).at(i) = clamp((this->data).at(i), 0, max);
         }
-        newImage.max = 255;
+        newImage.max = max;
     } else {
         cout << "The images must be the same size! \n";
     }
@@ -237,7 +249,7 @@ MyImageClass MyImageClass::operator*(double scalar) {
         newImageData.push_back(mul);
     }
     newImage.data = newImageData;
-    newImage.max = 255;
+    newImage.max = max;
 
     return newImage;
 }
@@ -251,7 +263,7 @@ MyImageClass MyImageClass::operator*=(double scalar) {
     for (int i = 0; i < data.size(); i ++) {
         data.at(i) = (int)(data.at(i) * scalar);
     }
-    newImage.max = 255;
+    newImage.max = max;
 
     return newImage;
 }
@@ -284,8 +296,9 @@ void MyImageClass::mirrorX() {
 
 MyImageClass MyImageClass::Gamma(double g) {
     MyImageClass newImage;
+    float max_f = (float)max;
     for(int i = 0; i < data.size(); i ++) {
-        double temp = pow((double)(data.at(i)/255.0), g) * 255.0f;
+        double temp = pow((double)(data.at(i)/max_f), g) * max_f;
         newImage.data.at(i) = (int)temp;
     }
     return newImage;
