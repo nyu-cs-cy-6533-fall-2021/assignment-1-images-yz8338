@@ -172,7 +172,35 @@ The results for this task are as follow:
 ![mul_pic](Assignment_1/figures/p3/mul_as_pic.png)
         
 * array index operator (used in mirrorX())
+        
 
+As for image format other than "P3", I also use "Mandrill-gray.ppm" as image1 to test. And here are the results:
+        
+* addition
+        
+![add_pic](Assignment_1/figures/p6/add_pic.png)
+        
+* addition assignment (average) & mirrorX()
+        
+![mirror_pic](Assignment_1/figures/p6/mirror_pic.png)
+        
+* subtraction (using clamp)
+        
+![subtract_pic](Assignment_1/figures/p6/subtract_pic.png)
+        
+* subtraction assignment
+        
+![subtract_as_pic](Assignment_1/figures/p6/subtract_as_pic.png)
+        
+* multiplication (handle overflows and underflows)
+        
+![mul_pic](Assignment_1/figures/p6/mul_pic.png)
+        
+* multiplication assignment
+        
+![mul_pic](Assignment_1/figures/p6/mul_as_pic.png)
+        
+* array index operator (used in mirrorX())
         
         
 ## Task 3: Gamma Correction
