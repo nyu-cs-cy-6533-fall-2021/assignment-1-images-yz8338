@@ -1,6 +1,6 @@
 # CS-GY 6533 A – Interactive Computer Graphics - Fall 2021
 
-### Course Instructors
+### Assignment 1
 
 *Cláudio Silva (instructor)*
 
