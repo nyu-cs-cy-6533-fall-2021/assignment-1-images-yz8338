@@ -54,7 +54,7 @@ The results are saved in *p3* and *p6* directories respectively as follows:
 
 I use C++'s operator overloading to implement this task. Basically, for each operation which contains two input images(like +, +=, -, -=), it first check whether their sizes are the same, then compute operations on vector. 
         
-Here are the code for addition: (other operations are also similar)
+Here are the code for addition: (other operations are also in similar construction)
 ```bash
 MyImageClass MyImageClass::operator+(MyImageClass image) {
     MyImageClass newImage;
@@ -82,12 +82,18 @@ MyImageClass MyImageClass::operator+(MyImageClass image) {
 
 The results for this task are as follow:
 * addition
-* addition assignment
-* subtraction
+![add_pic](Assignment_1/figures/p3/add_pic.png)
+* addition assignment (average) & mirrorX()
+![mirror_pic](Assignment_1/figures/p3/mirror_pic.png)
+* subtraction (using clamp)
+![subtract_pic](Assignment_1/figures/p3/subtract_pic.png)
 * subtraction assignment
-* multiplication
+![subtract_as_pic](Assignment_1/figures/p3/subtract_as_pic.png)
+* multiplication (handle overflows and underflows)
+![mul_pic](Assignment_1/figures/p3/mul_pic.png)
 * multiplication assignment
-* array index operator
+![mul_pic](Assignment_1/figures/p3/mul_as_pic.png)
+* array index operator (used in mirrorX())
 
         
         
