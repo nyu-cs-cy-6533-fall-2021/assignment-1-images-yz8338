@@ -80,6 +80,15 @@ MyImageClass MyImageClass::operator+(MyImageClass image) {
 }
 ```
 
+The results for this task are as follow:
+        * addition
+        * addition assignment
+        * subtraction
+        * subtraction assignment
+        * multiplication
+        * multiplication assignment
+        * array index operator
+
         
         
 ## Task 3: Gamma Correction
