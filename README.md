@@ -204,6 +204,42 @@ As for image format other than "P3", I also use "Mandrill-gray.ppm" as image1 to
         
         
 ## Task 3: Gamma Correction
+        
+This task is implemented in Gamma method of MyImageClass as follow:
+        
+```bash
+MyImageClass MyImageClass::Gamma(double g) {
+    MyImageClass newImage;
+    float max_f = (float)max;
+    for(int i = 0; i < data.size(); i ++) {
+        double temp = pow((double)(data.at(i)/max_f), g) * max_f;
+        newImage.data.at(i) = (int)temp;
+    }
+    return newImage;
+}
+```
+
+Here are the results when using *Mandrill.ppm*:
+       
+* gamma = 2.0
+        
+![gamma_pic1](Assignment_1/figures/p3/gamma_pic1.png)
+        
+* gamma = 0.5
+        
+![gamma_pic2](Assignment_1/figures/p3/gamma_pic2.png)
+
+Here are the results when using *Mandrill-gray.ppm*:
+        
+* gamma = 2.0
+
+![gamma_pic1](Assignment_1/figures/p6/gamma_pic1.png)
+        
+* gamma = 0.5
+        
+![gamma_pic2](Assignment_1/figures/p6/gamma_pic2.png)
+        
+        
 
 ## Task 4: Alpha Compositing
 
