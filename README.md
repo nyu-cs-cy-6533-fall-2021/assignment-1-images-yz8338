@@ -255,7 +255,7 @@ MyImageClass MyImageClass::Alpha(MyImageClass front, MyImageClass back, double a
 }
 ```
        
-Here are the results when using *Mandrill.ppm* as front and "tandon_stacked_color.ppm" as back:
+Here are the results when using *Mandrill.ppm* as front and *tandon_stacked_color.ppm* as back:
        
 * alpha = 0.5
         
@@ -265,7 +265,7 @@ Here are the results when using *Mandrill.ppm* as front and "tandon_stacked_colo
         
 ![alpha_pic2](Assignment_1/figures/p3/alpha_pic2.png)
 
-Here are the results when using *Mandrill-gray.ppm* as front and "tandon_stacked_color.ppm" as back:
+Here are the results when using *Mandrill-gray.ppm* as front and *tandon_stacked_color.ppm* as back:
         
 * alpha = 0.5
 
