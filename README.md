@@ -123,6 +123,7 @@ int main(int argc, char* argv[]) {
         image8 *= 0.5; // identical with image7
         image8.save("../../images/p3/mul_as_pic.ppm");
 
+        // Task 3 //
         //Gamma correction
         MyImageClass image9 = image1.Gamma(2.0);
         image9.save("../../images/p3/gamma_pic1.ppm");
