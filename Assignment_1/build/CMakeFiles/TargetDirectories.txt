@@ -1,3 +1,0 @@
-C:/Users/hz36a/OneDrive/桌面/CS6533-CG/Assignment/base/Assignment_1/build/CMakeFiles/Assignment1_bin.dir
-C:/Users/hz36a/OneDrive/桌面/CS6533-CG/Assignment/base/Assignment_1/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/hz36a/OneDrive/桌面/CS6533-CG/Assignment/base/Assignment_1/build/CMakeFiles/ZERO_CHECK.dir
