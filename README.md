@@ -52,6 +52,36 @@ The results are saved in *p3* and *p6* directories respectively as follows:
 
 ## Task 2: Operations on Images
 
+I use C++'s operator overloading to implement this task. Basically, for each operation which contains two input images(like +, +=, -, -=), it first check whether their sizes are the same, then compute operations on vector. 
+        
+Here are the code for addition: (other operations are also similar)
+```bash
+MyImageClass MyImageClass::operator+(MyImageClass image) {
+    MyImageClass newImage;
+    vector<int> newImageData;
+    int sum;
+
+    // Check size
+    if (this->width == image.width && this->height == image.height) {
+        // Addition
+        newImage.imageType = image.imageType;
+        newImage.width = image.width;
+        newImage.height = image.height;
+        for (int i = 0; i < image.data.size(); i ++) {
+            sum = (this->data).at(i) + image.data.at(i);
+            newImageData.push_back(sum);
+        }
+        newImage.data = newImageData;
+        newImage.max = max;
+    } else {
+        cout << "The images must be the same size! \n";
+    }
+    return newImage;
+}
+```
+
+        
+        
 ## Task 3: Gamma Correction
 
 ## Task 4: Alpha Compositing
