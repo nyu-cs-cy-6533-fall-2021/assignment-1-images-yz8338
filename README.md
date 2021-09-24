@@ -82,17 +82,29 @@ MyImageClass MyImageClass::operator+(MyImageClass image) {
 
 The results for this task are as follow:
 * addition
+        
 ![add_pic](Assignment_1/figures/p3/add_pic.png)
+        
 * addition assignment (average) & mirrorX()
+        
 ![mirror_pic](Assignment_1/figures/p3/mirror_pic.png)
+        
 * subtraction (using clamp)
+        
 ![subtract_pic](Assignment_1/figures/p3/subtract_pic.png)
+        
 * subtraction assignment
+        
 ![subtract_as_pic](Assignment_1/figures/p3/subtract_as_pic.png)
+        
 * multiplication (handle overflows and underflows)
+        
 ![mul_pic](Assignment_1/figures/p3/mul_pic.png)
+        
 * multiplication assignment
+        
 ![mul_pic](Assignment_1/figures/p3/mul_as_pic.png)
+        
 * array index operator (used in mirrorX())
 
         
