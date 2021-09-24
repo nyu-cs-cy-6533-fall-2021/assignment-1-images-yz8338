@@ -2,19 +2,11 @@
 
 ### Assignment 1
 
-*Cláudio Silva (instructor)*
+*Yangfan Zhou*
 
-370 Jay Street, room 1153 
+<yz8338@nyu.edu>
 
-<csilva@nyu.edu>
-
-Office hours: Friday, 10a-12pm
-
-### Lectures:
-Thursdays, 2:00pm - 4:30pm
-Rogers Hall, Rm 325
-
-## Course Description
+## Result Description
 
 This course provides an introduction to the field of Computer Graphics. We will cover the basic mathematical concepts, such as 2D and 3D transformations, study the interaction of light with geometry to derive shading models, the representation of geometric data in the memory, and implement iterative rendering algorithms. We will investigate how these fundamental components are integrated into current graphics processors (GPUs) and study the corresponding programming APIs (OpenGL and GLM). This course will also include a brief introduction to C++. 
 
