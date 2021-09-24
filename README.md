@@ -12,7 +12,23 @@
 
 For this task, I implemented a general image class *MyImageClass*. This class contains constructors: MyImageClass() and MyImageClass(const char* filename), which are used for creating default empty image and loading image. It also has the *save* method, which can save images in "P2", "P3" or "P5", "P6" formats. 
 
-The class has private members: imageType, width, height, max, and data (stored the pixel values as vector<int>). When we read in a image, the constructor will first get a line to store the imageType. Then, it store ASCII and binary format file differently. For the ASCII format, just reading all integers (ignore comments) and store them in data vector. For the binary format, it allocates a buffer and use read(buffer, size) to read the pixel values.
+The class has private members: imageType, width, height, max, and data (stored the pixel values as vector<int>). And the default constructor create an empty image by setting its private members as follows:
+```bash
+MyImageClass::MyImageClass() {
+    imageType = "P3";
+    width = 512;
+    height = 512;
+    max = 255;
+
+    vector<int> newImageData;
+    for (int i = 0; i < 786432; i ++) {
+        newImageData.push_back(0);
+    }
+    data = newImageData;
+}
+```
+  
+When we read in a image, the constructor will first get a line to store the imageType. Then, it store ASCII and binary format file differently. For the ASCII format, just reading all integers (ignore comments) and store them in data vector. For the binary format, it allocates a buffer and use read(buffer, size) to read the pixel values.
   
 As for saving image, the *save* method will first specify the image format by imageType. If the image is in p2 or p3 format, output all integers in data vector to the output file. Otherwise, use *write* function to output *data* as binary.
 
