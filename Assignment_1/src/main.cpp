@@ -45,7 +45,7 @@ int main(int argc, char* argv[]) {
         image8 *= 0.5; // identical with image7
         image8.save("../../images/p3/mul_as_pic.ppm");
 
-        //Gamma correction
+        // Gamma correction
         MyImageClass image9 = image1.Gamma(2.0);
         image9.save("../../images/p3/gamma_pic1.ppm");
 
@@ -58,6 +58,12 @@ int main(int argc, char* argv[]) {
 
         MyImageClass image12 = image1.Alpha(image1, image2, 0.85); // alpha = 0.85
         image12.save("../../images/p3/alpha_pic2.ppm");
+
+        // Optional task
+        MyImageClass image13 = image1.dilate();
+        MyImageClass image14 = image1.erode();
+        MyImageClass result = image13 - image14;
+        result.save("../../images/p3/optional.ppm");
 
 
     } catch(exception& e) {

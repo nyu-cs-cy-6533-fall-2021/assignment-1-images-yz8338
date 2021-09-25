@@ -15,6 +15,8 @@ class MyImageClass {
         void mirrorX();
         MyImageClass Gamma(double g);
         MyImageClass Alpha(MyImageClass front, MyImageClass back, double a);
+        MyImageClass dilate();
+        MyImageClass erode();
 
         MyImageClass operator+(MyImageClass);
         MyImageClass operator-(MyImageClass);

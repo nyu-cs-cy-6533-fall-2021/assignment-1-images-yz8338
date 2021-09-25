@@ -308,3 +308,69 @@ MyImageClass MyImageClass::Alpha(MyImageClass front, MyImageClass back, double a
     MyImageClass newImage = front * a + back * (1-a);
     return newImage;
 }
+
+MyImageClass MyImageClass::dilate() {
+    MyImageClass newImage;
+    newImage.data = this->data;
+
+    int se[9] = {1, 1, 1, 1, 1, 1, 1, 1, 1};
+    for (int i = 1; i < height - 1; i ++) {
+        for (int j = 1; j < width - 1; j ++) {
+
+            int index[9] = {(i-1)*width+(j-1), (i-1)*width+j, (i-1)*width+(j+1),
+                    i*width+(j-1), i*width+j, i*width+(j+1),
+                    (i+1)*width+(j-1), (i+1)*width+j, (i+1)*width+(j+1)};
+            
+            for (int m = 0; m < 3; m ++) {
+                int temp[9] = {se[0] * (operator[](index[0]).at(m)), se[1] * (operator[](index[1]).at(m)),
+                    se[2] * (operator[](index[2]).at(m)), se[3] * (operator[](index[3]).at(m)),
+                    se[4] * (operator[](index[4]).at(m)), se[5] * (operator[](index[5]).at(m)),
+                    se[6] * (operator[](index[6]).at(m)), se[7] * (operator[](index[7]).at(m)),
+                    se[8] * (operator[](index[8]).at(m))};
+                
+                int max = 0;
+                for (int n = 0; n < 9; n ++) {
+                    if (temp[n] > max) {
+                        max = temp[n];
+                    }
+                }
+
+                newImage.data.at(3 * (i*width + j) + m) = max;
+            }
+        }
+    }
+    return newImage;
+}
+
+MyImageClass MyImageClass::erode() {
+    MyImageClass newImage;
+    newImage.data = this->data;
+
+    int se[9] = {1, 1, 1, 1, 1, 1, 1, 1, 1};
+    for (int i = 1; i < height - 1; i ++) {
+        for (int j = 1; j < width - 1; j ++) {
+
+            int index[9] = {(i-1)*width+(j-1), (i-1)*width+j, (i-1)*width+(j+1),
+                    i*width+(j-1), i*width+j, i*width+(j+1),
+                    (i+1)*width+(j-1), (i+1)*width+j, (i+1)*width+(j+1)};
+            
+            for (int m = 0; m < 3; m ++) {
+                int temp[9] = {se[0] * (operator[](index[0]).at(m)), se[1] * (operator[](index[1]).at(m)),
+                    se[2] * (operator[](index[2]).at(m)), se[3] * (operator[](index[3]).at(m)),
+                    se[4] * (operator[](index[4]).at(m)), se[5] * (operator[](index[5]).at(m)),
+                    se[6] * (operator[](index[6]).at(m)), se[7] * (operator[](index[7]).at(m)),
+                    se[8] * (operator[](index[8]).at(m))};
+                
+                int min = temp[0];
+                for (int n = 0; n < 9; n ++) {
+                    if (temp[n] < min) {
+                        min = temp[n];
+                    }
+                }
+
+                newImage.data.at(3 * (i*width + j) + m) = min;
+            }
+        }
+    }
+    return newImage;
+}
