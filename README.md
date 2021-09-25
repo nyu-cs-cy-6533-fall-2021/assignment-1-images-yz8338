@@ -275,6 +275,11 @@ Here are the results when using *Mandrill-gray.ppm* as front and *tandon_stacked
         
 ![alpha_pic2](Assignment_1/figures/p6/alpha_pic2.png)
 
+## Optional Task
+        
+I use dilate and erode method within MyImageClass to implement morphological operations on *Mandrill.ppm*. They generally use structure element {1,1,1,1,1,1,1,1,1} to map each pixel and found the max / min value on the map and assign the value to the central. Then I subtract the erode image from the dilate image, and got the following result:
+        
+![optional](Assignment_1/figures/p3/optional.png)
 
 # Compilation Instructions
 
